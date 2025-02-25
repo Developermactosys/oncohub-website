@@ -13,6 +13,7 @@ import HowItWork from "./pages/paient-pages/work/HowItWork.jsx";
 import AboutUs from "./pages/paient-pages/about/AboutUs.jsx";
 import OurExperts from "./pages/paient-pages/experts/OurExperts.jsx";
 import PatientNavbar from "./components/patient-header/PatientNavbar.jsx";
+import PatientFooter from "./components/patient-header/PatientFooter.jsx";
 
 function App() {
   const DoctorNavlinks = [
@@ -67,7 +68,8 @@ function App() {
           <Route path={link.path} element={link.element} />
         ))}
       </Routes>
-      <Footer />
+      <PatientFooter/>
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
