@@ -7,43 +7,85 @@ import { motion } from "framer-motion";
 
 const PatientNavbar = () => {
   const [menuClicked, setMenuClicked] = useState(false);
-  const location = useLocation();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const location = useLocation();
   const isActive = (path) => location.pathname === path;
+
+  console.log(location.pathname)
+
+  const navItems = [
+    { path: "/patient/home", label: "Home" },
+    {
+      path: "/*",
+      label: "How It Works",
+      submenu: [
+        { path: "/patient/cancer-support", label: "Cancer Support" },
+        { path: "/patient/cancer-fighter", label: "Cancer Fighter" },
+        { path: "/patient/cancer-food", label: "Cancer Food" },
+      ],
+    },
+    { path: "/patient/about", label: "About" },
+    { path: "/patient/our-experts", label: "Our Experts" },
+  ];
+
+
   return (
     <div className="container mx-auto ">
-      <div className="flex items-center justify-between bg-white py-3  ">
+      <div className="flex items-center justify-between  py-3  ">
         <div>
           <img src={logo} alt="" className="w-[100%]" />
         </div>
 
         <div className="hidden lg:block ">
-          <ul className="flex items-center gap-12">
-            {[
-              { path: "patient/", label: "Home" },
-              { path: "patient/how-it-work", label: "How It Works" },
-              { path: "patient/about", label: "About" },
-              { path: "patient/our-experts", label: "Our Experts" },
-            ].map((navItem) => (
-              <>
-                <li key={navItem.path} className="text-base font-medium">
+       
+          <ul className="space-y-2 flex items-center gap-12 ">
+            {navItems.map((navItem, index) =>
+              navItem.submenu ? (
+                <li key={index} className="relative">
+                  <Link>
+                  <button
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    className="text-base font-medium pb-1 text-gray-600 hover:text-[#0183CE]"
+                  >
+                    {navItem.label}
+                  </button>
+                  </Link>
+               
+                  {dropdownOpen && (
+                    <ul className="absolute  left-0 mt-2 bg-white shadow-xl rounded-md border border-[#C4D2F1] w-40">
+                      {navItem.submenu.map((subItem, subIndex) => (
+                        <li key={subIndex} className=" last:border-0 border-b-[#C4D2F1]">
+                          <Link
+                            to={subItem.path}
+                            className="block px-4 py-2 text-gray-600 hover:bg-gray-100 hover:text-[#0183CE]"
+                          >
+                            {subItem.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ) : (
+                <li key={index} className="text-base font-medium">
                   <Link
                     to={navItem.path}
                     className={`relative pb-1 ${
                       isActive(navItem.path)
-                        ? " after:absolute text-[#0183CE] after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-[#0183CE] after:rounded-full"
+                        ? "text-[#0183CE]  after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-[#0183CE] after:rounded-full"
                         : "text-gray-600"
                     }`}
                   >
                     {navItem.label}
                   </Link>
                 </li>
-              </>
-            ))}
+              )
+            )}
             <li>
-              <button className="text-[#FFFFFF] rounded-[10px] text-base font-medium bg-[#0183CE] px-7 py-2">
-                Login
-              </button>
+              <button className="block px-6 py-2 text-white rounded-full bg-[#0183CE] hover:bg-gray-100 hover:text-[#0183CE]  hover:bg-white  text-base font-medium">Login</button>
             </li>
           </ul>
         </div>
@@ -86,12 +128,39 @@ const PatientNavbar = () => {
                 >
                   About
                 </Link>
-                <Link
-                  to={"/patient/how-it-work"}
-                  className="block  text-sm font-semibold"
-                >
-                  How It Works
-                </Link>
+                <div className="relative inline-block">
+                  <Link>
+                    <button
+                      onClick={() => setIsOpen(!isOpen)}
+                      className="block  text-sm font-semibold"
+                    >
+                      How It Works
+                    </button>
+                  </Link>
+
+                  {isOpen && (
+                    <div className="absolute left-0 mt-2  w-48 bg-white border rounded-lg shadow-lg">
+                      <Link
+                        to="/cancer-support"
+                        className="block px-4 py-2 text-blue-600 font-semibold hover:bg-gray-100"
+                      >
+                        Cancer Support
+                      </Link>
+                      <Link
+                        to="/cancer-fighter"
+                        className="block px-4 py-2 text-black border-t hover:bg-gray-100"
+                      >
+                        Cancer Fighter
+                      </Link>
+                      <Link
+                        to="/cancer-food"
+                        className="block px-4 py-2 text-black border-t hover:bg-gray-100"
+                      >
+                        Cancer Food
+                      </Link>
+                    </div>
+                  )}
+                </div>
                 <Link
                   to={"patient/our-experts"}
                   className="block  text-sm font-semibold"
@@ -108,3 +177,39 @@ const PatientNavbar = () => {
 };
 
 export default PatientNavbar;
+
+
+   {/* <ul className="flex items-center gap-12">
+            {[
+              { path: "/patient/home", label: "Home" },
+              { path: "/patient/how-it-work", label: "How It Works",
+                submenu: [
+                  { path: "/patient/cancer-support", label: "Cancer Support" },
+                  { path: "/patient/cancer-fighter", label: "Cancer Fighter" },
+                  { path: "/patient/cancer-food", label: "Cancer Food" },
+                ],
+               },
+              { path: "/patient/about", label: "About" },
+              { path: "/patient/our-experts", label: "Our Experts" },
+            ].map((navItem) => (
+              <>
+                <li key={navItem.path} className="text-base font-medium">
+                  <Link
+                    to={navItem.path}
+                    className={`relative pb-1 ${
+                      isActive(navItem.path)
+                        ? " after:absolute text-[#0183CE] after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-[#0183CE] after:rounded-full"
+                        : "text-gray-600"
+                    }`}
+                  >
+                    {navItem.label}
+                  </Link>
+                </li>
+              </>
+            ))}
+            <li>
+              <button className="text-[#FFFFFF] rounded-[10px] text-base font-medium bg-[#0183CE] px-7 py-2">
+                Login
+              </button>
+            </li>
+          </ul> */}
