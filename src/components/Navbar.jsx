@@ -71,19 +71,19 @@ const Navbar = () => {
               </button>
 
               <nav className="mt-10 px-10 space-y-4 ">
-                <Link to={"/"} className="block  text-sm font-semibold">
+                <Link to={"/"} className="block  text-sm sm:text-base font-semibold">
                   Home
                 </Link>
-                <Link to={"/about"} className="block  text-sm font-semibold">
+                <Link to={"/about"} className="block  text-sm sm:text-base font-semibold">
                   About
                 </Link>
                 <Link
                   to={"/become-a-doctor"}
-                  className="block  text-sm font-semibold"
+                  className="block  text-sm sm:text-base font-semibold"
                 >
                   Become a doctor
                 </Link>
-                <Link to={"/contact"} className="block  text-sm font-semibold">
+                <Link to={"/contact"} className="block  text-sm sm:text-base font-semibold">
                   Contact
                 </Link>
               </nav>

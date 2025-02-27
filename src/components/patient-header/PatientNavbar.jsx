@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../assets/images/logo.png";
+import whiteLogo from "../../assets/images/whitelogo.png";
+
 import { Link, useLocation } from "react-router-dom";
 import { X } from "lucide-react";
 import { Menu } from "lucide-react";
@@ -13,8 +15,6 @@ const PatientNavbar = () => {
 
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
-
-  console.log(location.pathname)
 
   const navItems = [
     { path: "/patient/home", label: "Home" },
@@ -31,33 +31,47 @@ const PatientNavbar = () => {
     { path: "/patient/our-experts", label: "Our Experts" },
   ];
 
+  const isWhiteText = ["/patient/about", "/patient/our-experts"].includes(
+    location.pathname
+  );
 
   return (
     <div className="container mx-auto ">
       <div className="flex items-center justify-between  py-3  ">
         <div>
-          <img src={logo} alt="" className="w-[100%]" />
+          <img
+            src={isWhiteText ? whiteLogo : logo}
+            alt=""
+            className="w-[100%]"
+          />
         </div>
 
         <div className="hidden lg:block ">
-       
           <ul className="space-y-2 flex items-center gap-12 ">
             {navItems.map((navItem, index) =>
               navItem.submenu ? (
                 <li key={index} className="relative">
                   <Link>
-                  <button
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                    className="text-base font-medium pb-1 text-gray-600 hover:text-[#0183CE]"
-                  >
-                    {navItem.label}
-                  </button>
+                    <button
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                      className={`text-base font-medium pb-1 ${
+                        isWhiteText
+                          ? "text-white"
+                          : "text-gray-600 hover:text-[#0183CE]"
+                      }`}
+                    >
+                      {navItem.label}
+                    </button>
                   </Link>
-               
+
                   {dropdownOpen && (
                     <ul className="absolute  left-0 mt-2 bg-white shadow-xl rounded-md border border-[#C4D2F1] w-40">
                       {navItem.submenu.map((subItem, subIndex) => (
-                        <li key={subIndex} className=" last:border-0 border-b-[#C4D2F1]">
+                        <li
+                          key={subIndex}
+                          className=" last:border-0 border-b-[#C4D2F1]"
+                          onClick={()=> setDropdownOpen(false)}
+                        >
                           <Link
                             to={subItem.path}
                             className="block px-4 py-2 text-gray-600 hover:bg-gray-100 hover:text-[#0183CE]"
@@ -73,9 +87,12 @@ const PatientNavbar = () => {
                 <li key={index} className="text-base font-medium">
                   <Link
                     to={navItem.path}
+                    onClick={() => setDropdownOpen(false)}
                     className={`relative pb-1 ${
-                      isActive(navItem.path)
-                        ? "text-[#0183CE]  after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-[#0183CE] after:rounded-full"
+                      isWhiteText
+                        ? "text-white"
+                        : isActive(navItem.path)
+                        ? "text-[#0183CE] after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-[#0183CE] after:rounded-full"
                         : "text-gray-600"
                     }`}
                   >
@@ -85,10 +102,13 @@ const PatientNavbar = () => {
               )
             )}
             <li>
-              <button className="block px-6 py-2 text-white rounded-full bg-[#0183CE] hover:bg-gray-100 hover:text-[#0183CE]  hover:bg-white  text-base font-medium">Login</button>
+              <button className="block px-6 py-2 text-white rounded-full bg-[#0183CE] hover:bg-gray-100 hover:text-[#0183CE]  hover:bg-white  text-base font-medium">
+                Login
+              </button>
             </li>
           </ul>
         </div>
+
         <div className="lg:hidden">
           <div className="relative">
             <button
@@ -119,12 +139,15 @@ const PatientNavbar = () => {
               </button>
 
               <nav className="mt-10 px-10 space-y-4 ">
-                <Link to={"patient/"} className="block  text-sm font-semibold">
+                <Link
+                  to={"patient/"}
+                  className="block  text-sm  sm:text-base font-semibold"
+                >
                   Home
                 </Link>
                 <Link
                   to={"/patient/about "}
-                  className="block  text-sm font-semibold"
+                  className="block  text-sm  sm:text-base font-semibold"
                 >
                   About
                 </Link>
@@ -132,7 +155,7 @@ const PatientNavbar = () => {
                   <Link>
                     <button
                       onClick={() => setIsOpen(!isOpen)}
-                      className="block  text-sm font-semibold"
+                      className="block  text-sm  sm:text-base font-semibold"
                     >
                       How It Works
                     </button>
@@ -163,7 +186,7 @@ const PatientNavbar = () => {
                 </div>
                 <Link
                   to={"patient/our-experts"}
-                  className="block  text-sm font-semibold"
+                  className="block  text-sm  sm:text-base font-semibold"
                 >
                   Our Experts
                 </Link>
@@ -178,8 +201,8 @@ const PatientNavbar = () => {
 
 export default PatientNavbar;
 
-
-   {/* <ul className="flex items-center gap-12">
+{
+  /* <ul className="flex items-center gap-12">
             {[
               { path: "/patient/home", label: "Home" },
               { path: "/patient/how-it-work", label: "How It Works",
@@ -212,4 +235,5 @@ export default PatientNavbar;
                 Login
               </button>
             </li>
-          </ul> */}
+          </ul> */
+}

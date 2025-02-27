@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 import About from "../src/pages/about/About.jsx";
 import Contact from "../src/pages/contact/Contact.jsx";
 import Home from "../src/pages/home/Home.jsx";
@@ -33,7 +33,10 @@ function App() {
           <Route path="about" element={<AboutUs />} />
           <Route path="our-experts" element={<OurExperts />} />
         </Route>
+        <Route path="*" element={ <Navigate to="/" replace /> } />
+
       </Routes>
+
     </BrowserRouter>
   );
 }

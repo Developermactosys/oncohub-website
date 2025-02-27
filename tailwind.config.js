@@ -11,6 +11,9 @@ export default {
         gray:"#757373",
         darkGray: "#676464"
       },
+      fontFamily: {
+        nunito: ['Nunito', 'serif'],
+      },
     },
     container: {
       padding: {
