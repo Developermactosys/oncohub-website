@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../assets/images/logo.png";
 import whiteLogo from "../../assets/images/whitelogo.png";
-
 import { Link, useLocation } from "react-router-dom";
 import { X } from "lucide-react";
 import { Menu } from "lucide-react";
@@ -10,16 +9,15 @@ import { motion } from "framer-motion";
 const PatientNavbar = () => {
   const [menuClicked, setMenuClicked] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
+  const [clickedNavItem, setClickedNavItem] = useState(null);
 
   const location = useLocation();
-  const isActive = (path) => location.pathname === path;
 
   const navItems = [
     { path: "/patient/home", label: "Home" },
     {
-      path: "/*",
+      path: "/patient/cancer-support",
       label: "How It Works",
       submenu: [
         { path: "/patient/cancer-support", label: "Cancer Support" },
@@ -28,6 +26,7 @@ const PatientNavbar = () => {
       ],
     },
     { path: "/patient/about", label: "About" },
+    { path: "/patient/doctors", label: "Doctors" },
     { path: "/patient/our-experts", label: "Our Experts" },
   ];
 
@@ -47,17 +46,26 @@ const PatientNavbar = () => {
         </div>
 
         <div className="hidden lg:block ">
+         
+
           <ul className="space-y-2 flex items-center gap-12 ">
             {navItems.map((navItem, index) =>
               navItem.submenu ? (
                 <li key={index} className="relative">
                   <Link>
                     <button
-                      onClick={() => setDropdownOpen(!dropdownOpen)}
-                      className={`text-base font-medium pb-1 ${
+                      onClick={() => {
+                        setDropdownOpen(!dropdownOpen);
+                        setClickedNavItem(index);
+                      }}
+                      className={`relative text-base font-medium pb-1 ${
                         isWhiteText
                           ? "text-white"
                           : "text-gray-600 hover:text-[#0183CE]"
+                      } ${
+                        clickedNavItem === index
+                          ? "after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-[#0183CE] after:rounded-full"
+                          : ""
                       }`}
                     >
                       {navItem.label}
@@ -65,12 +73,12 @@ const PatientNavbar = () => {
                   </Link>
 
                   {dropdownOpen && (
-                    <ul className="absolute  left-0 mt-2 bg-white shadow-xl rounded-md border border-[#C4D2F1] w-40">
+                    <ul className="absolute left-0 mt-3 bg-white shadow-xl rounded-md border border-[#C4D2F1] w-40">
                       {navItem.submenu.map((subItem, subIndex) => (
                         <li
                           key={subIndex}
-                          className=" last:border-0 border-b-[#C4D2F1]"
-                          onClick={()=> setDropdownOpen(false)}
+                          className="last:border-0 border-b-[#C4D2F1]"
+                          onClick={() => setDropdownOpen(false)}
                         >
                           <Link
                             to={subItem.path}
@@ -87,13 +95,19 @@ const PatientNavbar = () => {
                 <li key={index} className="text-base font-medium">
                   <Link
                     to={navItem.path}
-                    onClick={() => setDropdownOpen(false)}
+                    onClick={() => {
+                      setClickedNavItem(index);
+
+                      setDropdownOpen(false);
+                    }}
                     className={`relative pb-1 ${
                       isWhiteText
                         ? "text-white"
-                        : isActive(navItem.path)
-                        ? "text-[#0183CE] after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-[#0183CE] after:rounded-full"
-                        : "text-gray-600"
+                        : "text-gray-600 hover:text-[#0183CE]"
+                    } ${
+                      clickedNavItem === index
+                        ? "after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-[#0183CE] after:rounded-full"
+                        : ""
                     }`}
                   >
                     {navItem.label}
@@ -101,11 +115,6 @@ const PatientNavbar = () => {
                 </li>
               )
             )}
-            <li>
-              <button className="block px-6 py-2 text-white rounded-full bg-[#0183CE] hover:bg-gray-100 hover:text-[#0183CE]  hover:bg-white  text-base font-medium">
-                Login
-              </button>
-            </li>
           </ul>
         </div>
 
@@ -140,7 +149,7 @@ const PatientNavbar = () => {
 
               <nav className="mt-10 px-10 space-y-4 ">
                 <Link
-                  to={"patient/"}
+                  to={"patient/home"}
                   className="block  text-sm  sm:text-base font-semibold"
                 >
                   Home
@@ -237,3 +246,68 @@ export default PatientNavbar;
             </li>
           </ul> */
 }
+
+
+
+ {/* <ul className="space-y-2 flex items-center gap-12 ">
+            {navItems.map((navItem, index) =>
+              navItem.submenu ? (
+                <li key={index} className="relative">
+                  <Link>
+                    <button
+                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                      className={`text-base font-medium pb-1 ${
+                        isWhiteText
+                          ? "text-white"
+                          : "text-gray-600 hover:text-[#0183CE]"
+                      }`}
+                    >
+                      {navItem.label}
+                    </button>
+                  </Link>
+
+                  {dropdownOpen && (
+                    <ul className="absolute  left-0 mt-2 bg-white shadow-xl rounded-md border border-[#C4D2F1] w-40">
+                      {navItem.submenu.map((subItem, subIndex) => (
+                        <li
+                          key={subIndex}
+                          className=" last:border-0 border-b-[#C4D2F1]"
+                          onClick={() => setDropdownOpen(false)}
+                        >
+                          <Link
+                            to={subItem.path}
+                            className="block px-4 py-2 text-gray-600 hover:bg-gray-100 hover:text-[#0183CE]"
+                          >
+                            {subItem.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ) : (
+                <li key={index} className="text-base font-medium">
+                  <Link
+                    to={navItem.path}
+                    onClick={() => setDropdownOpen(false)}
+                    className={`relative pb-1 ${
+                      isWhiteText
+                        ? isActive(navItem.path)
+                          ? "text-white after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-[#0183CE] after:rounded-full"
+                          : "text-white"
+                        : isActive(navItem.path)
+                        ? "text-[#0183CE] after:absolute after:left-0 after:right-0 after:-bottom-1 after:h-0.5 after:bg-[#0183CE] after:rounded-full"
+                        : "text-gray-600"
+                    }`}
+                  >
+                    {navItem.label}
+                  </Link>
+                </li>
+              )
+            )}
+            <li>
+              <button className="block px-6 py-2 text-white rounded-full bg-[#0183CE] hover:bg-gray-100 hover:text-[#0183CE]  hover:bg-white  text-base font-medium">
+                Login
+              </button>
+            </li>
+          </ul> */}

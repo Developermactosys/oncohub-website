@@ -14,7 +14,13 @@ import doctorImage2 from "../../assets/images/doctor-image3.png";
 import doctorImage3 from "../../assets/images/doctor-image4.png";
 import doctorImage1 from "../../assets/images/asian-male-medical-doctor-2.png";
 import SliderComponent from "../../components/ui/SliderComponent";
-import { div } from "framer-motion/client";
+import blue_ambulance from "../../assets/images/blue-embulance.png";
+import blue_lamp from "../../assets/images/blue-lamp.png";
+import blue_camera from "../../assets/images/blue-camera.png";
+import doctor from "../../assets/images/doctor-white.png";
+
+
+
 
 const becomeDoctorCard = [
   {
@@ -22,25 +28,33 @@ const becomeDoctorCard = [
     subtitle:
       "Lorem Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ",
     image: images1,
+    hoverImage: blue_camera
   },
   {
     title: "Qualified Doctor",
     subtitle:
       "Lorem Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ",
-    image: images2,
-  },
-  {
-    title: "Emergency Care",
-    subtitle:
-      "Lorem Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ",
-    image: images3,
+    image: doctor,
+    hoverImage: images4
+
   },
   {
     title: "Operation Theater",
     subtitle:
       "Lorem Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ",
-    image: images4,
+    image: images3,
+    hoverImage: blue_lamp
+
   },
+  {
+    title: "Emergency Care",
+    subtitle:
+      "Lorem Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been ",
+    image: images2,
+    hoverImage: blue_ambulance
+
+  },
+
 ];
 
 const DiscoverDoctors = [
@@ -55,9 +69,12 @@ const DiscoverDoctors = [
 ];
 
 const Home = () => {
-  const [isClicked, setIsClicked] = useState(false);
+  const [clickedIndex, setClickedIndex] = useState(0);
 
-  const handleCard = (index) => setIsClicked(!isClicked);
+  const handleCard = (index) => {
+    console.log(index);
+    setClickedIndex(index === clickedIndex ? null : index);
+  };
 
   return (
     <div className="flex flex-col gap-16 xl:gap-20">
@@ -70,7 +87,8 @@ const Home = () => {
       <div className="container mx-auto ">
         <div className=" text-center pb-7 xl:pb-12">
           <h1 className=" text-2xl  lg:text-3xl font-medium">
-            Learn all about how to become Doctor on  <span className="text-primary">Oncohub</span>
+            Learn all about how to become Doctor on{" "}
+            <span className="text-primary">Oncohub</span>
           </h1>
         </div>
 
@@ -79,39 +97,38 @@ const Home = () => {
             <div key={index}>
               <BecomeDoctorCard
                 onClick={() => handleCard(index)}
-                isClicked={isClicked}
+                isClicked={clickedIndex === index}
                 title={card?.title}
                 subtitle={card?.subtitle}
-                image={card?.image}
+                image={ clickedIndex === index ?  card?.hoverImage: card?.image}
               />
             </div>
           ))}
         </div>
       </div>
 
-      <div>
+      <div className=" container mx-auto ">
         <div className=" text-center pb-7 xl:pb-12">
           <h1 className=" text-2xl  lg:text-3xl font-medium">
             Discover the story of Doctors on{" "}
             <span className="text-primary">Oncohub</span>
           </h1>
         </div>
-        <div>
+        <div className=" ">
           <SliderComponent>
             {DiscoverDoctors.map((doctor, index) => (
-           
-                <SliderDoctorsCard
-                  key={index}
-                  image={doctor.image}
-                  name={doctor.name}
-                  specialty={doctor.specialty}
-                 
-                />
-           
+              <SliderDoctorsCard
+                key={index}
+                image={doctor.image}
+                name={doctor.name}
+                specialty={doctor.specialty}
+                className=""
+              />
             ))}
           </SliderComponent>
         </div>
       </div>
+
       <div>
         <OurFamilies />
       </div>

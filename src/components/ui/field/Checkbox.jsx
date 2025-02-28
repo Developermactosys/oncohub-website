@@ -2,7 +2,7 @@ const Checkbox = ({ title, options, selectedOptions, onChange }) => {
     return (
       <div>
         <h3 className="text-gray-700 font-semibold mb-2">{title}</h3>
-        <div className="flex flex-col xl:flex-row flex-wrap  gap-7">
+        <div className="flex flex-col sm:flex-row flex-wrap  gap-7">
           {options.map((option, index) => (
             <label key={index} className="flex items-center space-x-2 cursor-pointer">
               <input

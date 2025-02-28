@@ -28,14 +28,14 @@ const BookNow = () => {
   };
 
   return (
-    <SectionBanner className="xl:gap-20 pb-20">
-      <div>
+    <SectionBanner className=" sm:grid-cols-1 lg:grid-cols-2 lg:gap-0 xl:gap-20 pb-20 ">
+      <div className="order-2">
         <h1 className="text-[#274760] font-bold text-2xl pb-7 xl:text-4xl xl:pb-14">
           Book Now{" "}
         </h1>
         <div >
           <div className="flex flex-col gap-5 justify-center">
-            <div className="flex flex-col xl:flex-row xl:items-center gap-6">
+            <div className="flex flex-col sm:flex-row xl:items-center gap-6">
               <div className="w-full">
                 <Label name="Name" />
                 <InputField
@@ -55,7 +55,7 @@ const BookNow = () => {
                 />
               </div>
             </div>
-            <div>
+            <div className="w-full">
               <Label name="Medical Record Number" />
               <InputField
                 placeholder="123456-7890-0987"
@@ -64,12 +64,12 @@ const BookNow = () => {
                 type=""
               />
             </div>
-            <div className="flex  flex-col xl:flex-row xl:items-center gap-6">
-              <div>
+            <div className="flex  flex-col sm:flex-row xl:flex-row xl:items-center gap-6">
+              <div className="w-full">
                 <Label name="Preferred Date" />
                 <InputField placeholder="" value="" onChange="" type="date" />
               </div>
-              <div>
+              <div className="w-full">
                 <Label name="Preferred Time" />
                 <InputField
                   placeholder=""
@@ -79,7 +79,7 @@ const BookNow = () => {
                 />
               </div>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col sm:flex-row">
               <Checkbox
                 title="Reason for Visit"
                 options={[
@@ -91,7 +91,7 @@ const BookNow = () => {
                 onChange={handleCheckboxChange}
               />
             </div>
-            <div className="flex flex-col">
+            <div className="">
               <Checkbox
                 title="Department"
                 options={[
@@ -107,8 +107,8 @@ const BookNow = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center xl:justify-end">
-        <img src={booknow_doctor_image} alt="" className="max-w-[80%]" />
+      <div className=" flex justify-center  sm:justify-center lg:justify-end lg:items-center order-1 lg:order-2">
+        <img src={booknow_doctor_image} alt="" className=" lg:h-[85%]  max-w-[90%] " />
       </div>
     </SectionBanner>
   );

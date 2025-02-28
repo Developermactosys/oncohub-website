@@ -22,7 +22,7 @@ const AboutUs = () => {
         </div>
 
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 xl:gap-20  ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-16 xl:gap-0 xl:px-10 ">
             <AboutUsBanner
               title="Why Choose "
               highlightedText="Us?"
@@ -44,10 +44,10 @@ const AboutUs = () => {
         </div>
 
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 xl:gap-20 ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:gap-16 gap-10 xl:gap-20 xl:px-10 ">
             <AboutUsBanner
-              ImageClassName="order-1 sm:order-2"
-              ContentClassName="order-2 sm:order-1"
+              ImageClassName="order-1 sm:order-2 lg:justify-end "
+              ContentClassName="order-2 sm:order-1 items-start" 
               title="How We Work "
               highlightedText="with Patients "
               image={image2}

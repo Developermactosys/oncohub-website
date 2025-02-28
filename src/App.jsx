@@ -13,6 +13,7 @@ import DoctorLayouts from "./layouts/DoctorLayouts.jsx";
 import PatientLayouts from "./layouts/PatientLayouts.jsx";
 import CancerFighter from "./pages/paient-pages/work/CancerFighter.jsx";
 import CancerFood from "./pages/paient-pages/work/CancerFood.jsx";
+import Doctors from "./pages/paient-pages/doctors/Doctors.jsx";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="cancer-fighter" element={<CancerFighter />} />
           <Route path="cancer-food" element={<CancerFood />} />
           <Route path="about" element={<AboutUs />} />
+          <Route path="doctors" element={<Doctors/>} />
           <Route path="our-experts" element={<OurExperts />} />
         </Route>
         <Route path="*" element={ <Navigate to="/" replace /> } />

@@ -38,7 +38,7 @@ const FirstStep = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim.
-        </p>
+        </p>  
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6  pt-10 xl:pt-10">
         {firstStepCards.map((card) => (

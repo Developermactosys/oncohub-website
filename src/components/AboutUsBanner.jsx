@@ -19,7 +19,8 @@ const AboutUsBanner = ({
         <img src={image} alt="Doctor Team" className="xl:h-[100%]" />
       </div>
 
-      <div className={cn("flex  flex-col  ", ContentClassName)}>
+      <div className={cn("flex  flex-col justify-end items-end", ContentClassName)}>
+        <div>
         <div>
           <h2 className=" text-3xl  xl:text-4xl font-semibold ">
             {title} <span className="text-[#0183CE] border-b-2 border-b-[#0183CE]">{highlightedText}</span>
@@ -40,6 +41,8 @@ const AboutUsBanner = ({
             Read More
           </button>
         </div>
+        </div>
+      
       </div>
     </>
   );
