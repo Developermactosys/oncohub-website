@@ -6,20 +6,19 @@ import SearchFilter from "../../../components/SearchFilter";
 const Doctors = () => {
   return (
     <div className="container mx-auto ">
-
-        <div>
-            <SearchFilter/>
-        </div>
-      <div className="flex flex-wrap justify-center gap-7">
+      <div>
+        <SearchFilter />
+      </div>
+      <div className="flex flex-wrap  justify-center gap-7">
         {doctorsData.map((doctor, index) => (
-          <div key={index} >
+          <div key={index}>
             <DoctorCard
               image={doctor.image}
               name={doctor.name}
               specialty={doctor.specialty}
               degrees={doctor.degrees}
               location={doctor.location}
-              className=''
+              className=""
             />
           </div>
         ))}

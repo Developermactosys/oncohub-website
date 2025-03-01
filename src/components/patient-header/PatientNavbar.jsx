@@ -26,7 +26,7 @@ const PatientNavbar = () => {
       ],
     },
     { path: "/patient/about", label: "About" },
-    { path: "/patient/doctors", label: "Doctors" },
+    { path: "/patient/doctors", label: "Find Your Doctor" },
     { path: "/patient/our-experts", label: "Our Experts" },
   ];
 
@@ -46,8 +46,6 @@ const PatientNavbar = () => {
         </div>
 
         <div className="hidden lg:block ">
-         
-
           <ul className="space-y-2 flex items-center gap-12 ">
             {navItems.map((navItem, index) =>
               navItem.submenu ? (
@@ -247,9 +245,8 @@ export default PatientNavbar;
           </ul> */
 }
 
-
-
- {/* <ul className="space-y-2 flex items-center gap-12 ">
+{
+  /* <ul className="space-y-2 flex items-center gap-12 ">
             {navItems.map((navItem, index) =>
               navItem.submenu ? (
                 <li key={index} className="relative">
@@ -310,4 +307,5 @@ export default PatientNavbar;
                 Login
               </button>
             </li>
-          </ul> */}
+          </ul> */
+}

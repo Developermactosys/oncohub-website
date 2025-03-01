@@ -6,7 +6,7 @@ function DoctorLayouts () {
     return (
         <>
             <Navbar/>
-            <Outlet/>
+              <Outlet/>
             <Footer/>
         </>
     )
