@@ -4,6 +4,7 @@ import image1 from "../assets/images/service.png";
 import image2 from "../assets/images/patient.png";
 import image3 from "../assets/images/medical.png";
 import image4 from "../assets/images/facility.png";
+import AboutCard from "./ui/card/AboutCard";
 
 
 const healthcareFeatures = [
@@ -57,6 +58,7 @@ const healthcareStats = [
 ];
 
 const WhyChooseUs = () => {
+
   const Features = ({ title, description, icon }) => {
     return (
       <div className="h-full flex flex-col justify-center items-center  xl:justify-start xl:items-start">
@@ -86,6 +88,7 @@ const WhyChooseUs = () => {
           </h1>
           <div className="grid grid-cols-1   sm:grid-cols-2 lg:grid-cols-2  xl:grid-cols-2 gap-8 ">
             {healthcareFeatures.map((feature) => (
+              
               <Features
                 icon={feature.icon}
                 title={feature.title}
@@ -95,8 +98,9 @@ const WhyChooseUs = () => {
           </div>
         </div>
       </div>
+      <AboutCard data={healthcareStats}/>
 
-      <div className="mt-12 xl:mt-20 rounded-[20px] overflow-hidden shadow-lg">
+      {/* <div className="mt-12 xl:mt-20 rounded-[20px] overflow-hidden shadow-lg">
         <div className="bg-cover bg-center bg-no-repeat bg-gradient-to-t from-[#71B4DA66] to-[#3DA6E399] ">
           <div className="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-5  gap-10 xl:gap-6 px-10 py-12 xl:px-16 xl:py-20 ">
             {healthcareStats.map((healthcare, index) => (
@@ -111,7 +115,7 @@ const WhyChooseUs = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

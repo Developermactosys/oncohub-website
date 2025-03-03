@@ -13,7 +13,7 @@ const DoctorCard = ({
   return (
     <div
       className={cn(
-        "bg-white shadow-xl rounded-xl  text-center border border-slate-200  shadow-[#e7f7ff]",
+        "bg-white shadow-xl rounded-xl  text-center  shadow-[#e7f7ff]",
         className
       )}
     >
@@ -21,7 +21,7 @@ const DoctorCard = ({
         <img
           src={image}
           alt={name}
-          className=" w-[80%]  object-cover"
+          className=" w-[90%]  object-cover"
         />
       </div>
       <div className="py-4">

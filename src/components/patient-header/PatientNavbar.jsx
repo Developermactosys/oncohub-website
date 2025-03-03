@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import logo from "../../assets/images/logo.png";
+// import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/oncohub-logo.jpg";
+
 import whiteLogo from "../../assets/images/whitelogo.png";
 import { Link, useLocation } from "react-router-dom";
 import { X } from "lucide-react";
@@ -37,11 +39,11 @@ const PatientNavbar = () => {
   return (
     <div className="container mx-auto ">
       <div className="flex items-center justify-between  py-3  ">
-        <div>
+        <div className="w-20">
           <img
             src={isWhiteText ? whiteLogo : logo}
             alt=""
-            className="w-[100%]"
+            className="w-full object-cover"
           />
         </div>
 

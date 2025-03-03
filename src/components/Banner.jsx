@@ -3,8 +3,14 @@ import baanersidrimage from "../assets/images/hro-doctor.png";
 import bgImage from "../assets/images/hero-bg.png";
 import Button from "./ui/button/Button";
 import cn from "../utils/cn";
+import SearchFilters from "./ui/field/SearchFilters ";
 
-const Banner = ({ title = "", subtitle = "", className = "" }) => {
+const Banner = ({
+  title = "",
+  subtitle = "",
+  className = "",
+  showSearchFilters = false,
+}) => {
   return (
     <div
       className="relative bg-cover bg-center  "
@@ -20,12 +26,17 @@ const Banner = ({ title = "", subtitle = "", className = "" }) => {
               <p className="text-sm lg:text-base  font-normal text-white py-5 xl:py-8 xl:text-xl">
                 {subtitle}
               </p>
-              <div>
-                <Button
-                  children={"Sign Up"}
-                  className="text-sm px-3 py-2 xl:text-[22px]  xl:px-9 xl:py-3"
-                />
-              </div>
+
+              {showSearchFilters ? (
+                <SearchFilters />
+              ) : (
+                <div>
+                  <Button
+                    children={"Sign Up"}
+                    className="text-sm px-3 py-2 xl:text-[22px]  xl:px-9 xl:py-3"
+                  />
+                </div>
+              )}
             </div>
           </div>
           <div className="flex justify-end items-end ">
