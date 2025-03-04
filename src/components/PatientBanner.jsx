@@ -2,6 +2,7 @@ import React from "react";
 import ellispse from "../assets/images/Ellipse.png";
 import PatientButton from "./ui/PatientButton";
 import patient_banner_doctor from "../assets/images/patient-banner-doctor.png";
+import SearchFilters from "./ui/field/SearchFilters ";
 
 const PatientBanner = () => {
   return (
@@ -29,13 +30,16 @@ const PatientBanner = () => {
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco.
           </p>
-          <div>
+          {/* <div>
             <PatientButton
               value="Get Appointment"
               type="button"
               onChange={() => console.log("")}
               className="text-sm"
             />
+          </div> */}
+          <div className="py-5">
+            <SearchFilters/>
           </div>
         </div>
       </div>

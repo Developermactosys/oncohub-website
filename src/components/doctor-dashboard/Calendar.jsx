@@ -35,7 +35,7 @@ const Calendar = () => {
   };
 
   return (
-    <div className=" bg-white rounded-xl shadow-lg overflow-hidden">
+    <div className=" bg-white rounded-xl shadow-lg overflow-hidden  overflow-y-auto ">
       {/* Header */}
       <div className="flex items-center justify-between bg-[#0183CE] p-3 text-white">
         <button onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}>

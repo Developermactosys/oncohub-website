@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import logo from "../../assets/images/logo.png";
-import logo from "../../assets/images/oncohub-logo.jpg";
+import logo from "../../assets/images/oncohub-logo.png";
 
 import whiteLogo from "../../assets/images/whitelogo.png";
 import { Link, useLocation } from "react-router-dom";

@@ -6,6 +6,7 @@ import { FaUser } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
 import { MoveRight } from "lucide-react";
 import Slider from "react-slick";
+import SliderComponent from "./ui/SliderComponent";
 
 const blogPosts = [
   {
@@ -37,13 +38,53 @@ const blogPosts = [
 ];
 
 const OurBlog = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 700,
+  var settings = {
+    dots: false,
+    infinite: false,
+    autoplaySpeed: 2000,
+    speed: 600,
     slidesToShow: 2,
     slidesToScroll: 1,
+    initialSlide: 0,
     arrows: false,
+    autoplay: true,
+    responsive: [
+      {
+        breakpoint: 1440,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          autoplay: true,
+        }
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          autoplay: true,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+          autoplay: true,
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          autoplay: true,
+        }
+      }
+    ]
   };
 
   const BlogCard = ({ image, author, date, title, description, link }) => {
@@ -78,11 +119,11 @@ const OurBlog = () => {
   return (
     <>
       <div className=" text-center pb-7 xl:pb-12">
-        <h1 className=" text-2xl  lg:text-4xl font-semibold">
-          Our{" "}
+        <h1 className=" text-3xl  lg:text-4xl font-semibold">
+          Our {" "}
           <span className="text-primary border-b-2 border-b-primary">Blog</span>
         </h1>
-        <div className="flex justify-center items-center xl:my-7">
+        <div className="flex justify-center items-center my-7">
           <p className="max-w-[650px] text-center xl:text-base font-normal">
             Stay informed with our latest health tips, medical news, and expert
             advice. Our blog is dedicated to helping you maintain a healthy
@@ -95,8 +136,10 @@ const OurBlog = () => {
           <div className="rounded-xl  shadow-md overflow-hidden border border-primary">
             <img src={blogImg1} alt="" className="w-full h-full object-cover" />
           </div>
-          <div className=" bg-primary absolute bottom-2 right-12 rounded-lg text-white p-4">
-            <div className="p-4">
+
+          {/* ---absolute div--- */}
+          <div className=" bg-primary  mt-5 flex  lg:absolute bottom-2 xl:right-16 lg:mx-6 xl:mx-0 rounded-lg text-white p-4">
+            <div className="pt-4">
               <div className="flex items-center text-gray-500 text-sm space-x-3 mb-2">
                 <div className="flex items-center space-x-1">
                   <FaUser className="text-white" />
@@ -112,26 +155,26 @@ const OurBlog = () => {
                 How to Boost Your Child's Immunity
               </h3>
 
-              <p className="text-gray-600 text-sm mt-1">
+              <p className="text-gray-600 text-sm mb-6 text-white">
                 {" "}
                 Discover the best nutrition tips to keep your kids healthy and
                 active...",
               </p>
 
-              <a href={"#"} className="text-primary flex  gap-3 font-semibold ">
+              <a href={"#"} className="text-white flex  gap-3 font-semibold ">
                 Details <MoveRight />
               </a>
             </div>
           </div>
         </div>
 
-          <div className="slider-container space-x-5">
-            <Slider {...settings} className="slider bg-white pb-5 rounded-lg ">
-              {blogPosts.map((post, index) => (
-                <BlogCard key={index} {...post} />
-              ))}
-            </Slider>
-         
+        <div className="space-x-5">
+          <SliderComponent settings={settings} >
+          {blogPosts.map((post, index) => (
+              <BlogCard key={index} {...post} />
+            ))}
+          </SliderComponent>
+        
         </div>
       </div>
     </>
@@ -139,3 +182,10 @@ const OurBlog = () => {
 };
 
 export default OurBlog;
+
+
+  {/* <Slider {...settings} className="slider bg-white pb-5 rounded-lg ">
+            {blogPosts.map((post, index) => (
+              <BlogCard key={index} {...post} />
+            ))}
+          </Slider> */}

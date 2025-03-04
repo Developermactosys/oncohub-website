@@ -29,7 +29,7 @@ const SearchFilters = () => {
       </select>
       <div className="w-full">
       
-        <button className="px-3 py-2 w-full sm:w-20 xl:w-full text-sm lg:text-base  placeholder-[#27476085] bg-white text-primary font-semibold rounded-md">
+        <button className="px-3 border-primary border py-2 w-full sm:w-20 xl:w-full text-sm lg:text-base  placeholder-[#27476085] bg-white text-primary font-semibold rounded-md">
           Search
         </button>
       </div>

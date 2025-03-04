@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../assets/images/patient-footer-logo.png";
-import { div } from "framer-motion/client";
 import PatientButton from "../ui/PatientButton";
+import { Link } from "react-router-dom";
 
 const PatientFooter = () => {
   const [email, setEmail] = useState("");
@@ -23,9 +23,10 @@ const PatientFooter = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-10  justify-between">
-
             <div className="  flex flex-col gap-5  min-w-[30%]">
-              <h2 className=" text-lg xl:text-xl font-semibold">Subscribe for More News</h2>
+              <h2 className=" text-lg xl:text-xl font-semibold">
+                Subscribe for More News
+              </h2>
               <div className="  border relative rounded-full ">
                 <input
                   type="email"
@@ -49,6 +50,9 @@ const PatientFooter = () => {
                 <li>Home</li>
                 <li>About Me</li>
                 <li>Services</li>
+                <Link to="/become-a-doctor">
+                  <li>Become a doctor</li>
+                </Link>
               </ul>
             </div>
             <div>
@@ -66,8 +70,12 @@ const PatientFooter = () => {
                 <li>(610) 945-7986</li>
                 <li>hello@Transparent.co</li>
                 <li className="pt-5 xl:pt-3">
-                  <PatientButton value='Free Consultation' className=' text-sm sm:text-base   xl:px-7 xl:py-3 font-medium rounded-full' type={'button'}/>
-                </li> 
+                  <PatientButton
+                    value="Free Consultation"
+                    className=" text-sm sm:text-base   xl:px-7 xl:py-3 font-medium rounded-full"
+                    type={"button"}
+                  />
+                </li>
               </ul>
             </div>
           </div>

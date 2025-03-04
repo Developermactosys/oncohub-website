@@ -5,10 +5,14 @@ import icon3 from "../../assets/images/consulation.png";
 import icon4 from "../../assets/images/video-consultant.png";
 import DashboardCards from "../../components/ui/card/dashboard-card/DashboardCards";
 
-import ladydoctor_image from "../../assets/images/lady-doctor.png";
-import visit_fortoday_bg from "../../assets/images/visit_fortoday_bg.png";
+import visit_fortoday_bg from "../../assets/images/dahboard-bg-image.png";
 import PatientList from "../../components/doctor-dashboard/PatientList";
 import Calendar from "../../components/doctor-dashboard/Calendar";
+import male from "../../assets/icon/male.svg";
+import arrow from "../../assets/icon/rotate-arrow.svg";
+import calender from "../../assets/icon/calender.svg";
+import watch from "../../assets/icon/watch.svg";
+import stereoscope from "../../assets/icon/stretoscop.svg";
 
 const DoctorDashboard = () => {
   const statsData = [
@@ -38,6 +42,83 @@ const DoctorDashboard = () => {
     },
   ];
 
+  const appointments = [
+    {
+      initials: "PP",
+
+      name: "Prakash Pathak",
+      gender: "Male",
+      age: "26 Year’s",
+      doctor: "Dr. Archana Mahadevan",
+      time: "07:00 - 08:00",
+      date: "Tuesday, 19 September",
+    },
+    {
+      initials: "AT",
+      name: "Anjali Thakur",
+      gender: "Female",
+      age: "26 Year’s",
+      doctor: "Dr. Archana Mahadevan",
+      time: "07:00 - 08:00",
+      date: "Tuesday, 19 September",
+    },
+    {
+      initials: "PP",
+      name: "Prakash Pathak",
+      gender: "Male",
+      age: "26 Year’s",
+      doctor: "Dr. Archana Mahadevan",
+      time: "07:00 - 08:00",
+      date: "Tuesday, 19 September",
+    },
+    {
+      initials: "AT",
+      name: "Anjali Thakur",
+      gender: "Female",
+      age: "26 Year’s",
+      doctor: "Dr. Archana Mahadevan",
+      time: "07:00 - 08:00",
+      date: "Tuesday, 19 September",
+    },
+  ];
+
+  const AppointmentCard = ({ appointment }) => {
+    return (
+      <div className="bg-white border hover:bg-[#F0F9FD] border-slate-200 shadow-md rounded-lg p-4 flex gap-4 items-center w-full">
+        <div className="w-12 h-12 p-4 bg-gradient-to-t from-[#0183CE] via-[#58B6DD] to-[#57B4DE] text-white flex items-center justify-center rounded-full font-bold text-lg">
+          {appointment.initials}
+        </div>
+
+        <div className="flex flex-col">
+          <h2 className="text-lg font-semibold">{appointment.name}</h2>
+          <div className=" grid grid-cols-3 text-gray-500 text-xs">
+            <div className="flex gap-2 items-center">
+              <img src={male} className="w-3" />
+              {appointment.gender}
+            </div>
+            <div className="flex gap-2 items-center">
+              <img src={arrow} className="w-3 object-cover" />
+              {appointment.age}
+            </div>
+
+            <div className="flex gap-2 items-center">
+              <img src={stereoscope} className="w-3" />
+              {appointment.doctor}
+            </div>
+            <div className="flex gap-2 items-center">
+              <img src={watch} className="w-3" />
+              {appointment.time}
+            </div>
+            <div className="flex gap-2 items-center">
+              <img src={calender} className="w-3" />
+              {appointment.date}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div>
       <h1 className="xl:text-xl font-normal pb-8">
@@ -60,47 +141,52 @@ const DoctorDashboard = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-3 grid-rows-2 gap-6">
-        <div className=" col-span-2">
+      <div className="flex gap-6 py-10">
+
+        <div className=" flex flex-col gap-6 ">
           <div
-            className="relative  flex mt-12 justify-between  h-[80%] bg-cover bg-center rounded-[16px] p-6  max-w-full shadow-lg"
+            className="  flex justify-between items-center   bg-cover bg-center rounded-[16px]    object-cover  max-w-full shadow-lg"
             style={{ backgroundImage: `url(${visit_fortoday_bg})` }}
           >
-            <div className="text-black">
-              <div>
-              <h1 className="text-xl font-bold pb-5">Visits for Today</h1>
-              <h1 className="text-5xl font-bold">104</h1>
-              </div>
-           
-
-              <div className="flex gap-4 mt-4">
-                <div className="bg-white bg-opacity-20 py-3 px-6 rounded-lg">
-                  <h2 className="text-xl font-bold text-black">40</h2>
-                  <p className="text-sm">New Patients</p>
-                  <span className="text-green-400 text-sm">⬆ 51%</span>
+            <div className="text-black  ">
+              <div className=" mx-10 my-10 ">
+                <div className="flex flex-col gap-4 py-16">
+                  <h1 className="text-xl font-bold ">Visits for Today</h1>
+                  <h1 className="xl:text-5xl font-bold">104</h1>
                 </div>
 
-                <div className="bg-white bg-opacity-20 py-3 px-5 rounded-lg">
-                  <h2 className="text-xl font-bold text-black">64</h2>
-                  <p className="text-sm">Return Patients</p>
-                  <span className="text-red-400 text-sm">⬇ 28%</span>
+                <div className="flex gap-4 ">
+                  <div className="bg-[#FFFFFF8C] bg-opacity-20 py-3 px-6 rounded-lg hover:shadow-xl ">
+                    <p className="xl:text-base font-semibold">New Patients</p>
+                    <h2 className="xl:text-3xl font-medium text-black">40</h2>
+                    <span className="text-green-400 text-sm">⬆ 51%</span>
+                  </div>
+
+                  <div className="bg-[#FFFFFF8C]  bg-opacity-20 py-3 px-5 rounded-lg hover:shadow-xl">
+                    <p className="xl:text-base font-semibold">
+                      Return Patients
+                    </p>
+                    <h2 className="xl:text-3xl font-medium text-black">64</h2>
+                    <span className="text-red-400 text-sm">⬇ 28%</span>
+                  </div>
                 </div>
               </div>
             </div>
-
-            <img
-              src={ladydoctor_image}
-              alt="Doctor"
-              className="absolute bottom-0 right-4 w-[43%]  object-cover"
-            />
+          </div>
+          <div className="border   border-slate-200 rounded-2xl">
+            <PatientList />
           </div>
         </div>
-        <div className=" mt-12 row-span-2">
-          <Calendar/>
+
+        <div className="">
+          <Calendar />
+          <div className="mt-6 space-y-4">
+            {appointments.map((appointment, index) => (
+              <AppointmentCard key={index} appointment={appointment} />
+            ))}
+          </div>
         </div>
-        <div className="border border-slate-200 rounded-2xl -mt-4 col-span-2">
-          <PatientList />
-        </div>
+
       </div>
     </div>
   );

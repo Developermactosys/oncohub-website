@@ -224,21 +224,3 @@ const Home = () => {
 };
 
 export default Home;
-
-{
-  /* <BookNow /> */
-}
-{
-  /* {DiscoverDoctors.map((doctor, index) => (
-  <SliderDoctorsCard
-    key={index}
-    image={doctor.image}
-    name={doctor.name}
-    specialty={doctor.specialty}
-    className=""
-  />
-))} */
-}
-{
-  /* <MedicareSupplement /> */
-}

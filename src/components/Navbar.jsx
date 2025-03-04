@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import logo from "../assets/images/logo.png";
-import logo from "../assets/images/oncohub-logo.jpg";
+import logo from "../assets/images/oncohub-logo.png";
 
 import { Link, useLocation } from "react-router-dom";
 import { X } from "lucide-react";
@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <div className="container mx-auto shadow-md">
       <div className="flex items-center justify-between bg-white py-3  ">
-        <div className="w-20">
+        <div className="w-14">
           <img src={logo} alt="" className="w-full object-cover" />
         </div>
         
