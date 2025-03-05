@@ -1,13 +1,19 @@
 import React from "react";
+import cn from "../../../../src/utils/cn";
 
-const AppointmentTable = ({ columns, data }) => {
+const AppointmentTable = ({ columns, data, className = "",tableRowClassname="" }) => {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-scroll">
       <table className="w-full  border-blue-400 rounded-md">
-        <thead className=" text-left text-sm font-bold border-b border-b-[#C6C6C6]">
+        <thead
+          className={cn(
+            " text-left text-sm font-bold border-b border-b-[#C6C6C6]",
+            className
+          )}
+        >
           <tr>
             {columns.map((column) => (
-              <th key={column.rowKey} className="p-3 ">
+              <th key={column.rowKey} className="p-3">
                 {column.header}
               </th>
             ))}
@@ -18,11 +24,26 @@ const AppointmentTable = ({ columns, data }) => {
           {data.map((row, rowIndex) => (
             <tr
               key={rowIndex}
-              className="border-b text-[13px] font-medium border-b-[#C6C6C6]"
+              className={cn("border-b text-[13px] font-medium border-b-[#C6C6C6]",tableRowClassname)} 
             >
               {columns.map((column, colIndex) => (
-                <td key={colIndex} className="p-3 ">
-                  {column.render ? column.render(row) : row[column.rowKey]}
+                <td key={colIndex} className="p-3">
+                  <div className="flex items-center gap-2">
+                    {column.rowKey === "name" && row.profileImage ? (
+                      <>
+                        <img
+                          src={row.profileImage}
+                          alt={row.name}
+                          className="w-12 h-12 rounded-full object-cover"
+                        />
+                        <span>{row[column.rowKey]}</span>
+                      </>
+                    ) : column.render ? (
+                      column.render(row)
+                    ) : (
+                      row[column.rowKey]
+                    )}
+                  </div>
                 </td>
               ))}
             </tr>

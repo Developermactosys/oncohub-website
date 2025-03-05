@@ -1,6 +1,6 @@
 import React from "react";
 
-const DashboardPatientListCard = ({ patient }) => {
+const DashboardPatientListCard = ({ patient,onViewDetail  }) => {
   return (
     <div className="bg-white  shadow-lg border border-[#0183CE80] rounded-lg p-5  ">
       <div className="">
@@ -29,7 +29,9 @@ const DashboardPatientListCard = ({ patient }) => {
         </div>
       </div>
 
-      <button className=" bg-primary text-white py-2 px-4 rounded-lg w-full text-sm font-semibold hover:bg-primary">
+      <button
+         onClick={onViewDetail}
+        className=" bg-primary text-white py-2 px-4 rounded-lg w-full text-sm font-semibold hover:bg-primary">
         View Patient Detail
       </button>
     </div>

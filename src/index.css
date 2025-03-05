@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   font-family: "Nunito", serif;
 }
@@ -57,4 +58,8 @@ element.style {
 .slick-dots {
   position: absolute;
   bottom: -38px !important;
+}
+
+:root {
+  --color-primary: #0183CE;
 }

@@ -5,6 +5,7 @@ import icon1 from "../../assets/icon/chat.svg";
 import icon2 from "../../assets/icon/video-call.svg";
 import icon3 from "../../assets/icon/phone.svg";
 import icon4 from "../../assets/icon/delete.svg";
+import addIcon from "../../assets/icon/add-icon.svg";
 
 const columns = [
   { header: "First Name", rowKey: "firstName", name: "First Name" },
@@ -53,6 +54,12 @@ const columns = [
 const Appointments = () => {
   return (
     <div>
+      <div className="flex justify-between py-4">
+        <h1 className="text-[26px] font-bold">Manage Appointment</h1>
+        <button className="flex   gap-2 px-5 py-2.5 text-[13px] font-semibold bg-primary text-white rounded-lg">
+          <img src={addIcon} alt="" className=""/> Add Appointment
+        </button>
+      </div>
       <AppointmentTable columns={columns} data={appointments} />
     </div>
   );

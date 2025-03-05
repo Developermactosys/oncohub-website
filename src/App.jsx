@@ -22,6 +22,7 @@ import Chat from "./pages/doctor-dashboard/Chat.jsx";
 import Earning from "./pages/doctor-dashboard/Earning.jsx";
 import Logout from "./pages/doctor-dashboard/Logout.jsx";
 import DoctorLayout from "./doctor-layout/DoctorLayout.jsx";
+import { SidebarProvider } from "./context/SidebarContext.jsx";
 
 function App() {
   const doctorRoutes = [
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <BrowserRouter>
+        <SidebarProvider>
       <Routes>
         <Route path="/" element={<DoctorLayouts />}>
           <Route index path="/" element={<Home />} />
@@ -66,6 +68,7 @@ function App() {
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+        </SidebarProvider>
     </BrowserRouter>
   );
 }
