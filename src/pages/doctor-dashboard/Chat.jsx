@@ -10,6 +10,11 @@ import peopleImage3 from "../../assets/images/people-image2.png";
 import phone from "../../assets/icon/phone.svg";
 import video_call from "../../assets/icon/video-call.svg";
 import more from "../../assets/icon/more-blue.svg";
+import voice from "../../assets/images/voice.png";
+import camera from "../../assets/images/camera.png";
+import smile from "../../assets/images/smile.png";
+import pin from "../../assets/images/pin.png";
+import { Paperclip, Smile, Camera, Mic, Send } from "lucide-react";
 
 const GroupChatData = [
   {
@@ -133,7 +138,7 @@ const Chat = () => {
           ))}
         </div>
       </div>
-      <div className="w-[60%]">
+      <div className="w-[60%] shadow-xl rounded-[25px] border border-[#00000033] p-6 relative">
         <div className="border-b border-b-[#B4ABABA8] pb-4 mb-3 w-full sticky">
           <div className="flex justify-between">
             <div className="flex gap-3">
@@ -146,21 +151,47 @@ const Chat = () => {
 
             <div className="flex gap-4">
               <button>
-                <img src={phone} alt="" className="w-6"/>
+                <img src={phone} alt="" className="w-6" />
               </button>
               <button>
-                <img src={video_call} alt="" className="w-6"/>
+                <img src={video_call} alt="" className="w-6" />
               </button>
               <button>
-                <img src={more} alt="" className="w-1"/>
+                <img src={more} alt="" className="w-1" />
               </button>
             </div>
           </div>
         </div>
         <div className="mt-10">
-        <ChatBox />
+          <ChatBox />
         </div>
-    
+        <div className="flex justify-center items-center">
+          <div className="flex items-center bg-[#EFF6FCDE] p-2 rounded-xl shadow-md bottom-5 left-3 w-[95%] absolute">
+            <button className="p-2 text-gray-500 hover:text-gray-700">
+              <Paperclip size={20} />
+            </button>
+
+            <input
+              type="text"
+              placeholder="Type your message here..."
+              className="flex-1 bg-transparent outline-none px-2 text-gray-700 placeholder-gray-400"
+            />
+             <button className="p-2 text-gray-500 hover:text-gray-700">
+              <Send size={24} />
+            </button>
+
+            <button className="p-2 text-gray-500 hover:text-gray-700">
+              <Smile size={24} />
+            </button>
+            <button className="p-2 text-gray-500 hover:text-gray-700">
+              <Camera size={24} />
+            </button>
+
+            <button className="p-3 bg-primary rounded-lg text-white">
+              <Mic size={20} />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

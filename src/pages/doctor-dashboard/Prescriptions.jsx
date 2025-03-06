@@ -100,6 +100,7 @@ const Prescriptions = () => {
           options={["1 Week", "2 Week", "3 Week"]}
           selected={selectedOptions.durationWeek}
           onSelect={(value) => handleDropdownChange("durationWeek", value)}
+          className='w-28'
         />
       ),
     },
@@ -111,7 +112,7 @@ const Prescriptions = () => {
           options={["Every Day", "Alternate Day", "Specific Day"]}
           selected={selectedOptions.repeat}
           onSelect={(value) => handleDropdownChange("repeat", value)}
-          className='w-36'
+          className='w-32'
         />
       ),
     },
@@ -123,6 +124,7 @@ const Prescriptions = () => {
           options={["After Food", "Before Food"]}
           selected={selectedOptions.toBeTaken}
           onSelect={(value) => handleDropdownChange("toBeTaken", value)}
+          className='w-28'
         />
       ),
     },
@@ -134,6 +136,7 @@ const Prescriptions = () => {
           options={["Every Day", "Alternate Day", "Specific Day"]}
           selected={selectedOptions.timeOfTheDay}
           onSelect={(value) => handleDropdownChange("timeOfTheDay", value)}
+          className='w-36'
         />
       ),
     },

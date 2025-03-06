@@ -1,30 +1,25 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import icon1 from "../../src/assets/icon/appointment.svg";
-import icon2 from "../../src/assets/icon/Chat-Patient.svg";
-import icon3 from "../../src/assets/icon/dashboard.svg";
-import icon4 from "../../src/assets/icon/earning.svg";
-import icon5 from "../../src/assets/icon/patient.svg";
-import icon6 from "../../src/assets/icon/prescription.svg";
+
 import icon7 from "../../src/assets/icon/Logout.svg";
 import { useSidebar } from "../context/SidebarContext";
 import { X } from "lucide-react";
 import { FiMenu } from "react-icons/fi";
 
-const Sidebar = () => {
+const Sidebar = ({menuItems}) => {
   const location = useLocation();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const { isCollapsed, setIsCollapsed } = useSidebar();
 
 
-  const [menuItems] = useState([
-    { name: "Dashboard", icon: icon3, path: "/dashboard" },
-    { name: "Patient List", icon: icon5, path: "/patients" },
-    { name: "Appointment", icon: icon1, path: "/appointments" },
-    { name: "Prescription", icon: icon6, path: "/prescriptions" },
-    { name: "Chat Patient", icon: icon2, path: "/chat" },
-    { name: "Earning", icon: icon4, path: "/earning" },
-  ]);
+  // const [menuItems] = useState([
+  //   { name: "Dashboard", icon: icon3, path: "/dashboard" },
+  //   { name: "Patient List", icon: icon5, path: "/patients" },
+  //   { name: "Appointment", icon: icon1, path: "/appointments" },
+  //   { name: "Prescription", icon: icon6, path: "/prescriptions" },
+  //   { name: "Chat Patient", icon: icon2, path: "/chat" },
+  //   { name: "Earning", icon: icon4, path: "/earning" },
+  // ]);
 
   return (
     <>

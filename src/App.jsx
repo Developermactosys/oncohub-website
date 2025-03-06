@@ -14,30 +14,13 @@ import PatientLayouts from "./layouts/PatientLayouts.jsx";
 import CancerFighter from "./pages/paient-pages/work/CancerFighter.jsx";
 import CancerFood from "./pages/paient-pages/work/CancerFood.jsx";
 import Doctors from "./pages/paient-pages/doctors/Doctors.jsx";
-import DoctorDashboard from "./pages/doctor-dashboard/DoctorDashboard.jsx";
-import Patients from "./pages/doctor-dashboard/Patients.jsx";
-import Appointments from "./pages/doctor-dashboard/Appointments.jsx";
-import Prescriptions from "./pages/doctor-dashboard/Prescriptions.jsx";
-import Chat from "./pages/doctor-dashboard/Chat.jsx";
-import Earning from "./pages/doctor-dashboard/Earning.jsx";
-import Logout from "./pages/doctor-dashboard/Logout.jsx";
+
 import DoctorLayout from "./doctor-layout/DoctorLayout.jsx";
 import { SidebarProvider } from "./context/SidebarContext.jsx";
+import { patientRoutes , doctorRoutes } from "./routes/DashboardRoute.jsx";
+import PatientLayout from "./patient-layout/PatientLayout.jsx";
 
 function App() {
-  const doctorRoutes = [
-    { path: "/dashboard", element: <DoctorDashboard />, name: "Dashboard" },
-    { path: "/patients", element: <Patients />, name: "Patient List" },
-    { path: "/appointments", element: <Appointments />, name: "Appointments" },
-    {
-      path: "/prescriptions",
-      element: <Prescriptions />,
-      name: "Prescriptions",
-    },
-    { path: "/chat", element: <Chat />, name: "Chat Patient" },
-    { path: "/earning", element: <Earning />, name: "Earnings" },
-    { path: "/logout", element: <Logout />, name: "Logout" },
-  ];
 
   return (
     <BrowserRouter>
@@ -62,6 +45,12 @@ function App() {
 
         <Route path="/" element={<DoctorLayout/>}>
           {doctorRoutes.map((route, index) => (
+            <Route key={index} path={route.path} element={route.element} />
+          ))}
+        </Route>
+
+        <Route path="/" element={<PatientLayout/>}>
+          {patientRoutes.map((route, index) => (
             <Route key={index} path={route.path} element={route.element} />
           ))}
         </Route>

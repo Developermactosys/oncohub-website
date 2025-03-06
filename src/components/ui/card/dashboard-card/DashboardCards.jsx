@@ -5,16 +5,15 @@ const DashboardCards = ({ icon, value, label, bgColor, className = "" }) => {
   return (
     <div
       className={cn(
-        `px-5 py-8 ${bgColor} rounded-lg shadow-lg flex flex-col sm:flex-row items-center gap-4 h-full`,
+        `px-5 py-8 ${bgColor} rounded-lg shadow-lg flex flex-col sm:flex-row items-center  r gap-4 h-full`,
         className
       )}
     >
-      {/* <div className="bg-white bg-opacity-20 p-3 rounded-full"> */}
-      <img src={icon} alt="" className="" />
-      {/* </div> */}
+      <img src={icon} alt="" className="max-w-16" />
+
       <div>
         <h2 className="text-white text-2xl font-bold">{value}</h2>
-        <p className="text-white text-sm">{label}</p>
+        <p className="text-white font-medium text-base">{label}</p>
       </div>
     </div>
   );

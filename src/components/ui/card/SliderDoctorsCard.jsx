@@ -38,18 +38,29 @@
 import React, { useState } from "react";
 import innerImage from "../../../assets/images/image-inner.png";
 import cn from "../../../utils/cn";
+import { Star } from "lucide-react";
+import PatientButton from "../PatientButton";
 
-const SliderDoctorsCard = ({ image, name, specialty, className = "" }) => {
+const SliderDoctorsCard = ({
+  image,
+  name,
+  specialty,
+  className = "",
+  isRating = false,
+}) => {
   const [hovered, setHovered] = useState(false);
 
   return (
     <div
-      className={cn("flex flex-col items-center relative group", className)}
+      className="flex flex-col items-center relative group"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className="relative w-[230px] h-[230px] lg:w-[290px] lg:h-[300px] flex justify-center items-center rounded-t-full overflow-hidden shadow-lg"
+        className={cn(
+          "relative w-[230px] h-[230px] lg:w-[290px] lg:h-[300px] flex justify-center items-center rounded-t-full overflow-hidden shadow-lg",
+          className
+        )}
         style={{
           backgroundImage: `url(${innerImage})`,
           backgroundSize: "cover",
@@ -79,9 +90,26 @@ const SliderDoctorsCard = ({ image, name, specialty, className = "" }) => {
         <h6 className="text-[#1B3C74] font-semibold text-lg lg:text-xl text-center">
           {name}
         </h6>
-        <p className="text-[#0183CE] font-medium text-sm lg:text-base">
-          {specialty}
-        </p>
+        {isRating ? (
+          <div className="flex">
+            <div className="flex items-center">
+              <p>Rating</p>
+              {[...Array(5)].map((_, index) => (
+              <Star key={index} size={20} fill="#FCA70E" color="white" />
+            ))}
+            </div>
+            <PatientButton
+            className="  text-xs text-white py-1 px-2 rounded-full  font-medium"
+            type={"button"}
+            value={"0 - 5 Year"}
+            onChange={() => console.log("")}
+          />
+          </div>
+        ) : (
+          <p className="text-[#0183CE] font-medium text-sm lg:text-base">
+            {specialty}
+          </p>
+        )}
       </div>
     </div>
   );
