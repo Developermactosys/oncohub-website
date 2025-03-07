@@ -10,10 +10,7 @@ import peopleImage3 from "../../assets/images/people-image2.png";
 import phone from "../../assets/icon/phone.svg";
 import video_call from "../../assets/icon/video-call.svg";
 import more from "../../assets/icon/more-blue.svg";
-import voice from "../../assets/images/voice.png";
-import camera from "../../assets/images/camera.png";
-import smile from "../../assets/images/smile.png";
-import pin from "../../assets/images/pin.png";
+
 import { Paperclip, Smile, Camera, Mic, Send } from "lucide-react";
 
 const GroupChatData = [

@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { FiChevronDown } from "react-icons/fi"; 
 import cn from "../../../utils/cn";
 
-const SelectDropdown = ({ options, selected, onSelect ,className}) => {
+const SelectDropdown = ({ options, selected, onSelect ,className,buttonClassname=''}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={cn("relative ",className)}>
+    <div className={cn("relative ",className,buttonClassname)}>
  
       <button
-        className="w-full px-3 py-2 border text-xs border-[#0183CE] text-[#0183CE] font-semibold rounded-full flex justify-between items-center"
+        className={cn("w-full px-3 py-2 border text-xs border-[#0183CE] text-[#0183CE] font-semibold rounded-full flex justify-between items-center",buttonClassname)}
         onClick={() => setIsOpen(!isOpen)}
       >
         {selected} <FiChevronDown />
