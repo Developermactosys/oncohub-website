@@ -57,10 +57,10 @@ const tableData = [
 const Earning = () => {
   return (
     <div>
-      <div className="grid grid-cols-4 gap-6">
-        <div className="col-span-3">  <RevenueChart /></div>
+      <div className="grid grid-cols-4 sm:grid-cols-4 gap-6">
+        <div className="col-span-4 sm:col-span-3">  <RevenueChart /></div>
       <div>
-      <div className="bg-[#FF5363] px-4 py-3 rounded-[10px] shadow-2xl drop-shadow-[0px_4px_10px_rgba(255,83,99,0.2)]">
+      <div className="bg-[#FF5363] col-span-4 px-4 py-3 w-full rounded-[10px] shadow-2xl drop-shadow-[0px_4px_10px_rgba(255,83,99,0.2)]">
           <div className="flex justify-between ">
             <h1 className="text-base font-semibold text-[#39354E]">Balance</h1>
             <button>
