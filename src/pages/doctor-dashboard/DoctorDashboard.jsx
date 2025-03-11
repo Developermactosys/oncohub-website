@@ -121,13 +121,14 @@ const DoctorDashboard = () => {
 
   return (
     <div>
-      <h1 className="xl:text-xl font-normal pb-8">
+      <h1 className=" text-lg  xl:text-xl font-normal pb-8">
         Good Morning{" "}
-        <span className="xl:text-2xl text-[#0183CE] font-bold">
+        <span className="text-xl  xl:text-2xl text-[#0183CE] font-bold">
           Dr. Archana Mahadaven
         </span>
       </h1>
-      <div className="  grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+
+      <div className="  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-6">
         {statsData.map((data, index) => (
           <div key={index} className="">
             <DashboardCards
@@ -141,7 +142,7 @@ const DoctorDashboard = () => {
         ))}
       </div>
 
-      <div className="flex gap-6 py-10">
+      <div className="flex flex-col xl:flex-row gap-6 sm:py-10">
 
         <div className=" flex flex-col gap-6 ">
           <div
@@ -149,10 +150,10 @@ const DoctorDashboard = () => {
             style={{ backgroundImage: `url(${visit_fortoday_bg})` }}
           >
             <div className="text-black  ">
-              <div className=" mx-10 my-10 ">
+              <div className=" mx-5 sm:mx-10 my-10 ">
                 <div className="flex flex-col gap-4 py-16">
-                  <h1 className="text-xl font-bold ">Visits for Today</h1>
-                  <h1 className="xl:text-5xl font-bold">104</h1>
+                  <h1 className="text-xl  font-bold ">Visits for Today</h1>
+                  <h1 className="  text-4xl  xl:text-5xl font-bold">104</h1>
                 </div>
 
                 <div className="flex gap-4 ">
@@ -178,9 +179,12 @@ const DoctorDashboard = () => {
           </div>
         </div>
 
-        <div className="">
+        <div className="sm:flex gap-8 xl:flex-col">
+          <div className="sm:w-[80%] xl:w-full">
           <Calendar />
-          <div className="mt-6 space-y-4">
+          </div>
+       
+          <div className="   space-y-4 w-full">
             {appointments.map((appointment, index) => (
               <AppointmentCard key={index} appointment={appointment} />
             ))}
@@ -194,13 +198,4 @@ const DoctorDashboard = () => {
 
 export default DoctorDashboard;
 
-{
-  /* <div className="relative flex justify-between  bg-cover bg-center rounded-[16px] max-w-[100%]" style={{ backgroundImage: `url(${visit_fortoday_bg})` }}>
-            <div>
-              <h1>Visits for Today</h1>
-              <h1>104</h1>
-            </div>
 
-            <img src={ladydoctor_image} alt="" className="-mb-20" />
-          </div> */
-}

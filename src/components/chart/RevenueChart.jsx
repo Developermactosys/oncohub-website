@@ -1,7 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
 const RevenueChart = () => {
+  const [strokeWidth, setStrokeWidth] = useState(4);
+
+  useEffect(() => {
+    const updateStrokeWidth = () => {
+      if (window.innerWidth < 640) {
+        setStrokeWidth(1); 
+      } else if (window.innerWidth < 1024) {
+        setStrokeWidth(2); 
+      } else {
+        setStrokeWidth(2); 
+      }
+    };
+
+    updateStrokeWidth();
+    window.addEventListener("resize", updateStrokeWidth);
+
+    return () => window.removeEventListener("resize", updateStrokeWidth);
+  }, []);
   const options = {
     chart: {
       type: "bar",
@@ -16,7 +34,7 @@ const RevenueChart = () => {
       },
     },
     dataLabels: { enabled: false },
-    stroke: { show: true, width: 5, colors: ["transparent"], },
+    stroke: { show: true, width: strokeWidth , colors: ["transparent"], },
     xaxis: {
       categories: [
         "Monday",
@@ -46,9 +64,9 @@ const RevenueChart = () => {
   ];
 
   return (
-    <div className="bg-[#F8F9FA] shadow-lg p-4 rounded-lg">
+    <div className="bg-[#F8F9FA] shadow-lg sm:p-4 rounded-lg">
       <h3 className="text-xl text-[#05004E] font-bold  mb-2">Total Revenue</h3>
-      <Chart options={options} series={series} type="bar" height={300} />
+      <Chart options={options} series={series} type="bar" height={300} className=''/>
     </div>
   );
 };

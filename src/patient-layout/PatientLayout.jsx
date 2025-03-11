@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar";
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/doctor-dashboard/Navbar";
 import { useSidebar } from "../context/SidebarContext";
-import { PatientMenuItems  } from "../components/const/MenuIteam";
+import { PatientMenuItems } from "../components/const/MenuIteam";
 const PatientLayout = () => {
   const { isCollapsed } = useSidebar();
 

@@ -5,7 +5,6 @@ import Appointments from "../pages/doctor-dashboard/Appointments.jsx";
 import Prescriptions from "../pages/doctor-dashboard/Prescriptions.jsx";
 import Chat from "../pages/doctor-dashboard/Chat.jsx";
 import Earning from "../pages/doctor-dashboard/Earning.jsx";
-import Logout from "../pages/doctor-dashboard/Logout.jsx";
  
   import PatientDashboard from "../pages/patient-dashboard/PatientDashboard.jsx";
 import Profile from "../pages/patient-dashboard/Profile.jsx";
@@ -29,7 +28,7 @@ export const doctorRoutes = [
     },
     { path: "/chat", element: <Chat />, name: "Chat Patient" },
     { path: "/earning", element: <Earning />, name: "Earnings" },
-    { path: "/logout", element: <Logout />, name: "Logout" },
+   
   ];
 
  export  const patientRoutes = [

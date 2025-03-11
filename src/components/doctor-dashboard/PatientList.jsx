@@ -68,7 +68,7 @@ const PatientList = () => {
   ];
 
   return (
-    <div className="grid grid-cols-2 px-5 gap-6  my-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 px-2 sm:px-5 gap-6  my-5">
       <div className="">
         <div className="flex justify-between">
           <h1 className="text-xl font-semibold">Patient List</h1>

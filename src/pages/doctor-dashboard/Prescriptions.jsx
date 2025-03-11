@@ -154,8 +154,8 @@ const Prescriptions = () => {
   ];
 
   return (
-    <div className="border border-[#D6D6D6] p-5 rounded-[10px]">
-      <h1 className="text-xl font-bold">View Prescription</h1>
+    <div className="border border-[#D6D6D6] sm:p-5 rounded-[10px]">
+      <h1 className="text-xl font-bold p-4 xl:py-4 sm:p-0">View Prescription</h1>
       <AppointmentTable
         columns={column}
         data={Diagnoses}

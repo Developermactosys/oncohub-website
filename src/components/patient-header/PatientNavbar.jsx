@@ -30,6 +30,7 @@ const PatientNavbar = () => {
     { path: "/patient/about", label: "About" },
     { path: "/patient/doctors", label: "Find Your Doctor" },
     { path: "/patient/our-experts", label: "Our Experts" },
+    { path: "/patient/login", label: "Login" },
   ];
 
   const isWhiteText = ["/patient/about", "/patient/our-experts"].includes(
@@ -92,6 +93,7 @@ const PatientNavbar = () => {
                   )}
                 </li>
               ) : (
+           
                 <li key={index} className="text-base font-medium">
                   <Link
                     to={navItem.path}
@@ -112,7 +114,9 @@ const PatientNavbar = () => {
                   >
                     {navItem.label}
                   </Link>
+                
                 </li>
+                
               )
             )}
           </ul>

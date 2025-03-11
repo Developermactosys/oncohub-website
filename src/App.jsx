@@ -19,6 +19,7 @@ import DoctorLayout from "./doctor-layout/DoctorLayout.jsx";
 import { SidebarProvider } from "./context/SidebarContext.jsx";
 import { patientRoutes , doctorRoutes } from "./routes/DashboardRoute.jsx";
 import PatientLayout from "./patient-layout/PatientLayout.jsx";
+import Login from "./pages/login/Login.jsx";
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="about" element={<AboutUs />} />
           <Route path="doctors" element={<Doctors />} />
           <Route path="our-experts" element={<OurExperts />} />
+          <Route path="login" element={<Login/>} />
         </Route>
 
         <Route path="/" element={<DoctorLayout/>}>

@@ -30,14 +30,14 @@ const AppointmentTable = ({ columns, data, className = "",tableRowClassname="" }
                 <td key={colIndex} className="p-3">
                   <div className="flex items-center gap-2">
                     {column.rowKey === "name" && row.profileImage ? (
-                      <>
+                      <div className="flex flex-row items-center gap-2 w-32 ">
                         <img
                           src={row.profileImage}
                           alt={row.name}
                           className="w-12 h-12 rounded-full object-cover"
                         />
-                        <span>{row[column.rowKey]}</span>
-                      </>
+                        <span className="text-center ">{row[column.rowKey]}</span>
+                      </div>
                     ) : column.render ? (
                       column.render(row)
                     ) : (

@@ -1,25 +1,15 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import icon7 from "../../src/assets/icon/Logout.svg";
 import { useSidebar } from "../context/SidebarContext";
 import { X } from "lucide-react";
 import { FiMenu } from "react-icons/fi";
 
-const Sidebar = ({menuItems}) => {
-  const location = useLocation();
+const Sidebar = ({ menuItems }) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const { isCollapsed, setIsCollapsed } = useSidebar();
-
-
-  // const [menuItems] = useState([
-  //   { name: "Dashboard", icon: icon3, path: "/dashboard" },
-  //   { name: "Patient List", icon: icon5, path: "/patients" },
-  //   { name: "Appointment", icon: icon1, path: "/appointments" },
-  //   { name: "Prescription", icon: icon6, path: "/prescriptions" },
-  //   { name: "Chat Patient", icon: icon2, path: "/chat" },
-  //   { name: "Earning", icon: icon4, path: "/earning" },
-  // ]);
+  const [selectedMenuItem, setSelectedMenuItem] = useState(0);
 
   return (
     <>
@@ -42,13 +32,20 @@ const Sidebar = ({menuItems}) => {
               <Link
                 key={index}
                 to={item.path}
-                className={`flex items-center justify-center lg:justify-normal gap-3 p-2 rounded-md transition ${
-                  location.pathname === item.path
+                onClick={() => setSelectedMenuItem(index)}
+                className={`flex items-center justify-center lg:justify-normal gap-3 p-3     rounded-md transition ${
+                  selectedMenuItem === index
                     ? "bg-[#5BAAD7] text-white"
                     : "hover:bg-[#5BAAD7]"
                 }`}
               >
-                <img src={item.icon} className="text-xl" width={26} />
+                <div className="w-[26px] h-[26px] object-cover ">
+                  <img
+                    src={item.icon}
+                    className="text-xl w-full object-cover "
+                  />
+                </div>
+
                 {!isCollapsed && (
                   <span className="text-sm font-medium">{item.name}</span>
                 )}
@@ -57,15 +54,19 @@ const Sidebar = ({menuItems}) => {
           </div>
 
           <div>
-            <Link
-              to="/logout"
-              className="flex items-center gap-3 p-2 rounded-md hover:bg-[#5BAAD7] transition"
+            <div
+              className={`flex items-center gap-3 p-2 rounded-md transition ${
+                selectedMenuItem === null
+                  ? "bg-[#5BAAD7] text-white"
+                  : "hover:bg-[#5BAAD7]"
+              }`}
+              onClick={() => setSelectedMenuItem(null)}
             >
               <img src={icon7} alt="" width={26} />
               {!isCollapsed && (
                 <span className="text-sm font-medium">Logout</span>
               )}
-            </Link>
+            </div>
           </div>
         </nav>
       </div>
@@ -132,49 +133,3 @@ const Sidebar = ({menuItems}) => {
 };
 
 export default Sidebar;
-
-// <div
-//   className={`h-screen bg-[#0183CE] text-white  fixed flex flex-col p-4 transition-all duration-300 ${
-//     isCollapsed ? "w-20 border-r-8 border-white " : "w-64 "
-//   }`}
-// >
-//   <button
-//     className="p-2 text-white bg-[#5BAAD7] rounded-md mb-5   self-end"
-//     onClick={() => setIsCollapsed(!isCollapsed)}
-//   >
-//     <FiMenu size={24} />
-//   </button>
-
-//   <nav className="flex flex-col gap-16 ">
-//     <div className="flex flex-col  gap-4 ">
-//       {menuItems.map((item, index) => (
-//         <Link
-//           key={index}
-//           to={item.path}
-//           className={`flex items-center gap-3 p-2 rounded-md transition ${
-//             location.pathname === item.path
-//               ? "bg-[#5BAAD7] text-white"
-//               : "hover:bg-[#5BAAD7]"
-//           }`}
-//         >
-//           <img src={item.icon} className="text-xl" width={26} />
-//           {!isCollapsed && (
-//             <span className="text-sm font-medium">{item.name}</span>
-//           )}
-//         </Link>
-//       ))}
-//     </div>
-
-//     <div className="">
-//       <Link
-//         to="/logout"
-//         className="flex items-center gap-3 p-2  rounded-md hover:bg-[#5BAAD7] transition"
-//       >
-//         <img src={icon7} alt="" width={26} />
-//         {!isCollapsed && (
-//           <span className="text-sm font-medium">Logout</span>
-//         )}
-//       </Link>
-//     </div>
-//   </nav>
-// </div>

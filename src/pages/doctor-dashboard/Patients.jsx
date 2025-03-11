@@ -19,10 +19,10 @@ const Patients = () => {
 {!selectedPatient ? (
         <>
           
-          <div className="flex justify-between items-center py-6">
+          <div className="flex  flex-col lg:flex-row justify-between lg:items-center py-6">
             <h1 className="text-2xl font-semibold">Patient List</h1>
-            <div className="flex gap-4 items-center text-sm font-semibold">
-              <button className="flex gap-2 px-5 py-2.5 bg-primary text-white rounded-lg">
+            <div className="flex gap-4 items-center text-sm font-semibold my-2 sm:my-4 xl:my-0">
+              <button className="flex gap-2 px-3 sm:px-5 py-2.5 bg-primary text-white rounded-lg">
                 <img src={download} alt="" /> Download Report
               </button>
               <button className="flex gap-2 px-5 py-2 border text-primary border-primary rounded-lg">
@@ -32,7 +32,7 @@ const Patients = () => {
           </div>
 
           
-          <div className="grid grid-cols-1 gap-9 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-9 sm:grid-cols-2 lg:grid-cols-2  xl:grid-cols-4">
             {patients.map((patient) => (
               <DashboardPatientListCard
                 key={patient.id}
